@@ -1,6 +1,11 @@
 anccastrosi-anvargasa
 
 #INSTRUCCIONES DE EJECUCIÓN
+NOTA el archivo "datos.dat" no fue posible agregarlo al repositorio debido a su tamaño por lo que
+será accesible desde el siguiente link
+
+https://drive.google.com/file/d/1N2O0WP7SkQzYubtQoP4lp6bkvOtw7wqZ/view?usp=drivesdk 
+
 1.Se debe ejecutar el archivo MakeFile para compilar los archivos, esto generará dos archivos
 ejecutables: interfaz y buscar
 
