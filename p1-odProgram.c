@@ -5,9 +5,14 @@
 #include <fcntl.h>
 #include <ctype.h>
 #include <time.h>
+
+/*Estructura para almacenar los datos ingresados por el usuario*/
 struct ingresoType{
     int idOrigen, idDestino, hora;
 };
+
+/*Se presenta la interfaz al usuario, donde se leen los datos del usuario y se guardan en el archivo
+temporal usado por la tubería para la comunicación con el proceso de búsqueda*/
 int main(){
     struct ingresoType *entrada;
     entrada= malloc(sizeof(struct ingresoType));
@@ -24,6 +29,7 @@ int main(){
     
     long inicio= clock();
 
+    //ESCRITURA DE LA ENTRADA INGRESADA POR EL USUARIO
     int fd;
 
     mkfifo("/tmp/mi_fifo",0666);

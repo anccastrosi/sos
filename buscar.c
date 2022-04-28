@@ -59,12 +59,17 @@ float busqueda(int origenId, int destinoId, int hora)
     archivo = fopen("datos.dat", "rb");
     if (archivo == NULL)
         exit(-1);
+
+    /*Se abre el archivo y se ubica en la posición encontrada con la función buscarIndice, luego
+    se lee el dato ahí almacenado*/
     fseek(archivo, posicion * sizeof(struct viajeType), SEEK_SET);
     struct viajeType viaje;
     fread(&viaje, sizeof(struct viajeType), 1, archivo);
 
     fseek(archivo, posicion * sizeof(struct viajeType), SEEK_SET);
 
+    /*Se busca en la tabla de datos saltando a través de los diferentes next hasta encontrar el dato
+    solicitado o llegar al final de las coincidencias de id origen*/
     while (viaje.idDestino != destinoId || viaje.hora != hora)
     {
         posicion = viaje.nextIdOrigen;
@@ -73,6 +78,8 @@ float busqueda(int origenId, int destinoId, int hora)
         if (viaje.nextIdOrigen == -1)
             break;
     }
+
+    /*Verifica que el dato encontrado coincide con la solicitud del usuario*/
     if (viaje.idDestino == destinoId && viaje.hora == hora)
     {
         mediaViaje = viaje.meanTravelTime;
